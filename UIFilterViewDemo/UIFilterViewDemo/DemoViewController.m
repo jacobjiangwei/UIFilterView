@@ -40,7 +40,11 @@
     
     [self.view addSubview:demoVC];
     [demoVC reloadData];
-    
+    [demoVC reloadData];
+    [demoVC reloadData];
+    [demoVC reloadData];
+    [demoVC reloadData];
+    [demoVC reloadData];
 	// Do any additional setup after loading the view.
 }
 
@@ -53,12 +57,12 @@
 #pragma mark delegate
 - (CGFloat)heightForRowAtSection:(NSInteger)section  //不同的行，高度不同；同一行则无需区分
 {
-    return 60.0f;
+    return 30.0f;
 }
 
 - (CGFloat)lengthForRowAtSection:(NSInteger)section  //同一行，不同的列可能长度不等，譬如字太长，一般的话，直接弄个覆盖全面的长度足矣
 {
-    return 180.0f;
+    return 90.0f;
 }
 
 - (void)filterView:(UIFilterView *)filterView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -69,24 +73,24 @@
 #pragma mark datasource
 - (NSInteger)numberOfSectionsInFilterView:(UIFilterView *)filterView  //总行数
 {
-    return 4;
+    return 9;
 }
 
 - (NSInteger)numberOfRowsInSection:(NSInteger)section  // 每一行有几列
 {
     switch (section) {
         case 1:
-            return 3;
+            return 6;
             break;
         case 2:
-            return 4;
+            return 8;
             break;
         case 3:
-            return 1;
+            return 4;
             break;
             
         default:
-            return 2;
+            return 9;
             break;
     }
 }
@@ -113,7 +117,7 @@
 
 - (UIFilterViewCell *)filterView:(UIFilterView *)filterView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIFilterViewCell *cell=[[UIFilterViewCell alloc]initWithStatus:YES text:@"test" selectedColor:[UIColor redColor] normalColor:[UIColor blackColor] backgroundColor:[UIColor greenColor] indexPath:indexPath backgroundImageView:nil selectedImageView:nil];
+    UIFilterViewCell *cell=[[UIFilterViewCell alloc]initWithStatus:YES text:@"test" selectedColor:[UIColor redColor] normalColor:[UIColor blackColor] backgroundColor:[UIColor whiteColor] indexPath:indexPath backgroundImageView:nil selectedImageView:nil];
     return cell;
 }
 

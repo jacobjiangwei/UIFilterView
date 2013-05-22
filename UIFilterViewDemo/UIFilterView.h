@@ -41,6 +41,7 @@
     id<UIFilterViewDataSource> _datasource;
     NSMutableArray *            _currentSelectedIndexArray;
     NSMutableArray *            _scrollViewArray;
+    NSMutableArray *            _lineViewArray;
     NSInteger                   _numberOfSections;
     BOOL                        _supportSectionTitle;//支持每一行的标题功能
     UIView                     *_backgroundView;
