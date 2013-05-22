@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1666DA39174C5E58007DE0C8 /* UIFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1666DA38174C5E58007DE0C8 /* UIFilterView.m */; };
+		1666DA3F174C70BA007DE0C8 /* UIFilterViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1666DA3E174C70BA007DE0C8 /* UIFilterViewCell.m */; };
+		1666DA42174C8DC9007DE0C8 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1666DA41174C8DC9007DE0C8 /* DemoViewController.m */; };
 		1679D25C174C5D2E00765EEE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1679D25B174C5D2E00765EEE /* UIKit.framework */; };
 		1679D25E174C5D2E00765EEE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1679D25D174C5D2E00765EEE /* Foundation.framework */; };
 		1679D260174C5D2E00765EEE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1679D25F174C5D2E00765EEE /* CoreGraphics.framework */; };
@@ -19,6 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1666DA37174C5E58007DE0C8 /* UIFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFilterView.h; sourceTree = "<group>"; };
+		1666DA38174C5E58007DE0C8 /* UIFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFilterView.m; sourceTree = "<group>"; };
+		1666DA3D174C70BA007DE0C8 /* UIFilterViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFilterViewCell.h; sourceTree = "<group>"; };
+		1666DA3E174C70BA007DE0C8 /* UIFilterViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFilterViewCell.m; sourceTree = "<group>"; };
+		1666DA40174C8DC9007DE0C8 /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
+		1666DA41174C8DC9007DE0C8 /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
 		1679D258174C5D2E00765EEE /* UIFilterViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIFilterViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1679D25B174C5D2E00765EEE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1679D25D174C5D2E00765EEE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -48,9 +57,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1666DA36174C5DD9007DE0C8 /* UIFilterView */ = {
+			isa = PBXGroup;
+			children = (
+				1666DA37174C5E58007DE0C8 /* UIFilterView.h */,
+				1666DA38174C5E58007DE0C8 /* UIFilterView.m */,
+				1666DA3D174C70BA007DE0C8 /* UIFilterViewCell.h */,
+				1666DA3E174C70BA007DE0C8 /* UIFilterViewCell.m */,
+			);
+			name = UIFilterView;
+			sourceTree = "<group>";
+		};
 		1679D24F174C5D2E00765EEE = {
 			isa = PBXGroup;
 			children = (
+				1666DA36174C5DD9007DE0C8 /* UIFilterView */,
 				1679D261174C5D2E00765EEE /* UIFilterViewDemo */,
 				1679D25A174C5D2E00765EEE /* Frameworks */,
 				1679D259174C5D2E00765EEE /* Products */,
@@ -80,6 +101,8 @@
 			children = (
 				1679D26A174C5D2E00765EEE /* AppDelegate.h */,
 				1679D26B174C5D2E00765EEE /* AppDelegate.m */,
+				1666DA40174C8DC9007DE0C8 /* DemoViewController.h */,
+				1666DA41174C8DC9007DE0C8 /* DemoViewController.m */,
 				1679D262174C5D2E00765EEE /* Supporting Files */,
 			);
 			path = UIFilterViewDemo;
@@ -166,6 +189,9 @@
 			files = (
 				1679D268174C5D2E00765EEE /* main.m in Sources */,
 				1679D26C174C5D2E00765EEE /* AppDelegate.m in Sources */,
+				1666DA39174C5E58007DE0C8 /* UIFilterView.m in Sources */,
+				1666DA3F174C70BA007DE0C8 /* UIFilterViewCell.m in Sources */,
+				1666DA42174C8DC9007DE0C8 /* DemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +304,7 @@
 				1679D277174C5D2E00765EEE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
