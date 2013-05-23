@@ -2,8 +2,8 @@
 //  AppDelegate.m
 //  UIFilterViewDemo
 //
-//  Created by jacob on 13-5-22.
-//  Copyright (c) 2013年 jacob. All rights reserved.
+//  Created by jacob QQ: 110773265 on 13-5-22.
+//  Copyright (c) 2013年 jacob QQ: 110773265. All rights reserved.
 //
 
 #import "AppDelegate.h"

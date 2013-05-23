@@ -2,8 +2,8 @@
 //  UIFilterViewCell.m
 //  UIFilterViewDemo
 //
-//  Created by jacob on 13-5-22.
-//  Copyright (c) 2013年 jacob. All rights reserved.
+//  Created by jacob QQ: 110773265 on 13-5-22.
+//  Copyright (c) 2013年 jacob QQ: 110773265. All rights reserved.
 //
 
 #import "UIFilterViewCell.h"
@@ -13,10 +13,13 @@
 @synthesize selected=_selected;
 @synthesize selectedColor=_selectedColor;
 @synthesize backgroundColor=_backgroundColor;
-@synthesize backgroundImageView=_backgroundImageView;
+@synthesize backgroundImage=_backgroundImage;
 @synthesize index=_index;
 @synthesize textLabel=_textLabel;
-@synthesize selectedImageView=_selectedImageView;
+@synthesize selectedImage=_selectedImage;
+
+@synthesize delegate=_delegate;
+@synthesize backgroundView=_backgroundView;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -36,13 +39,28 @@
 }
 */
 
+-(void)dealloc
+{
+    [_singleRecognizer release];
+    [_selectedColor release];
+    [_normalColor release];
+    [_backgroundColor release];
+    [_backgroundImage release];
+    [_selectedImage release];
+    [_textLabel release];
+
+    [super dealloc];
+}
+
 -(void)resetFrame:(CGRect)_frame
 {
     [super setFrame:_frame];
+    
     [_textLabel setFrame:CGRectMake(0, 0, _frame.size.width, _frame.size.height)];
+    [_backgroundView setFrame:CGRectMake(0, 0, _frame.size.width, _frame.size.height)];
 }
 
--(id)initWithStatus:(BOOL)selected text:(NSString *)content selectedColor:(UIColor *)sColor normalColor:(UIColor *)nColor backgroundColor:(UIColor *)bColor indexPath:(NSIndexPath *)indexPath backgroundImageView:(UIImageView *)bImageView selectedImageView:(UIImageView *)sImageView
+-(id)initWithStatus:(BOOL)selected text:(NSString *)content selectedColor:(UIColor *)sColor normalColor:(UIColor *)nColor backgroundColor:(UIColor *)bColor indexPath:(NSIndexPath *)indexPath backgroundImage:(UIImage *)bImage selectedImage:(UIImage *)sImage;
 {
     self = [super init];
     if (self) {
@@ -52,21 +70,26 @@
         _backgroundColor=bColor;
         
         _index=indexPath;
-        _backgroundImageView=bImageView;
-        _selectedImageView=sImageView;
+        [_index retain];
+        _backgroundImage=bImage;
+        _selectedImage=sImage;
+        
+        _backgroundView=[[UIImageView alloc]init];
+        [self addSubview:_backgroundView];
 
         
         // Initialization code
         _textLabel=[[UILabel alloc]init];
         _textLabel.text=content;
         _textLabel.backgroundColor=_backgroundColor;
+        _textLabel.textAlignment=NSTextAlignmentCenter;
         if (selected) {
-            if (_selectedImageView) {
-                self.backgroundImageView=_selectedImageView;
+            if (_selectedImage) {
+                [self.backgroundView setImage:_selectedImage];
             }
-            else if (_backgroundImageView)
+            else if (_backgroundImage)
             {
-                self.backgroundImageView=_backgroundImageView;
+                [self.backgroundView setImage:_backgroundImage];
             }
             else
             {
@@ -75,9 +98,9 @@
         }
         else
         {
-            if (_backgroundImageView)
+            if (_backgroundImage)
             {
-                self.backgroundImageView=_backgroundImageView;
+                [self.backgroundView setImage:_backgroundImage];
             }
             else
             {
@@ -96,21 +119,29 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated                    // animate between regular and selected state
 {
     if (selected!=_selected) {
-        if (animated) {
+        if (selected) {
+            if (_selectedImage) {
+                [_backgroundView setImage:_selectedImage];
+            }
             _textLabel.textColor=_selectedColor;
         }
         else
         {
+            if (_backgroundView) {
+                [_backgroundView setImage:_backgroundImage];
+            }
             _textLabel.textColor=_normalColor;
         }
     }
+    _selected=selected;
 }
 
 -(void)handleSingleTap
 {
     NSLog(@"tap");
-    _selected=YES;
     [self setSelected:YES animated:YES];
+    [_delegate taped:self];
+    
 }
 
 @end
