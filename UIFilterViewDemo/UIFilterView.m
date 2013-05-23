@@ -46,8 +46,19 @@
             [child release];
             child=nil;
         }
+        [_scrollViewArray removeAllObjects];
         [_scrollViewArray release];
         _scrollViewArray=nil;
+    }
+    
+    if (_lineViewArray) {
+        for (UIView *obj in _lineViewArray) {
+            [obj release];
+            obj=nil;
+        }
+        [_lineViewArray removeAllObjects];
+        [_lineViewArray release];
+        _lineViewArray=nil;
     }
     
     if (_currentSelectedIndexArray) {
@@ -56,9 +67,11 @@
         }
         [_currentSelectedIndexArray removeAllObjects];
         [_currentSelectedIndexArray release];
+        _currentSelectedIndexArray=nil;
     }
     _currentSelectedIndexArray =[[NSMutableArray alloc]initWithCapacity:0];
     _scrollViewArray=[[NSMutableArray alloc]initWithCapacity:0];
+    _lineViewArray=[[NSMutableArray alloc]initWithCapacity:0];
     
     CGRect _frame=self.frame;
     
@@ -70,12 +83,12 @@
         CGFloat height=[_delegate heightForRowAtSection:section];
         CGFloat length=[_delegate lengthForRowAtSection:section];
         
-        UIScrollView *sectionScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, section*height, _frame.size.width, height)];
+        UIScrollView *sectionScrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, section*(height+1), _frame.size.width, height)];
         [sectionScrollView setContentSize:CGSizeMake(numberInThisSection*length, height)];
         sectionScrollView.pagingEnabled=YES;
         sectionScrollView.bounces=NO;
         sectionScrollView.delegate=self;
-        sectionScrollView.showsHorizontalScrollIndicator=YES;
+        sectionScrollView.showsHorizontalScrollIndicator=NO;
         
         for (int eachRow=0; eachRow < numberInThisSection; eachRow++) {
             UIFilterViewCell *cell=[_datasource filterView:self cellForRowAtIndexPath:[NSIndexPath indexPathForRow:eachRow inSection:section]];
@@ -84,6 +97,11 @@
         }
         [self addSubview:sectionScrollView];
         [_scrollViewArray addObject:sectionScrollView];
+        
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, height*(section+1)+section, self.bounds.size.width, 1)];
+        lineView.backgroundColor = [UIColor grayColor];
+        [self addSubview:lineView];
+        [_lineViewArray addObject:lineView];
     }
 
 }
