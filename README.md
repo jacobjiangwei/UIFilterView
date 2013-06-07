@@ -2,6 +2,7 @@ UIFilterView
 ============
 
 筛选器自定义控件写得忒麻烦，写个标准化的，跟uitableview一样好用简单
+http://cc.cocimg.com/bbs/attachment/Fid_6/6_652_1038c5160a3240c.png
 
 
 基本工作就是把UIFilterView UIFilterViewCell拷贝拖入项目即可
